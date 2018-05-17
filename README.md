@@ -1,6 +1,6 @@
 # Group3JavaEE
 
-Create a Database called "group2db" in pgAdmin4
+Create a Database called "group3db" in pgAdmin4
 
 Create the following:
 
@@ -14,21 +14,21 @@ Create the following:
 
 * Login
 
-* Studentpage for register/unregister to one or more courses. As well as for seeing their attendence
+* Studentpage for register/unregister to one or more courses. As well as for seeing their attendance
 statistics.
 
-* Teacherpage for seeing their courses and students in each course, check attendence for their students
+* Teacherpage for seeing their courses and students in each course, check attendance for their students
 and see attendence statistics for their courses.
 
 * Administator page that gives access to different pages:
     One page for registering teachers and students
     One page for adding classes and connect it with teachers and students.
-    One page for seeing attencdence statistics of each course and student, as well as daily
-    statistics for attendence of all courses.
-    One page to "standalone" on attendence with JMS
+    One page for seeing attendance statistics of each course and student, as well as daily
+    statistics for attendance of all courses.
+    One page to "standalone" on attendance with JMS
 
 2. WHAT TO HAVE IN THE DATABASE
-Administrators, Teachers, Students, Courses, Attendence
+Administrators, Teachers, Students, Courses, Attendance
 
 3. LIST OF CLASSES TO MAKE
 
