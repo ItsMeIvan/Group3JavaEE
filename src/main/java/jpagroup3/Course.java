@@ -6,20 +6,18 @@ import java.util.List;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Teacher_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Teacher teacher;
 
-    @ManyToMany(fetch = FetchType.LAZY,  cascade = CascadeType.REMOVE) //????
+    @OneToMany(fetch = FetchType.LAZY) //Check what CascadeType is and if we need it
     private List<Attendance> attendances;
 
-
-    @ManyToMany(fetch = FetchType.LAZY,  cascade = CascadeType.REMOVE) //????
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Student> students;
 
     public long getId() {
@@ -40,7 +38,7 @@ public class Course {
         return name;
     }
 
-    public void setName(String make) {
+    public void setName(String name) {
         this.name = name;
     }
 }

@@ -1,4 +1,4 @@
-package jpagroup3;
+package jpa;
 
 import javax.persistence.*;
 
@@ -39,7 +39,7 @@ public class Person {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -47,7 +47,7 @@ public class Person {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
