@@ -11,7 +11,7 @@ public class TestTables {
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("jpa-example2");
         em = emFactory.createEntityManager();
 
-        
+
 
     }
 
