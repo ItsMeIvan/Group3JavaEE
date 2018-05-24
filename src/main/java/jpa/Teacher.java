@@ -13,7 +13,6 @@ public class Teacher {
     private String firstname;
     private String lastname;
     private String email;
-    private String username;
     private String password;
 
     @OneToMany
@@ -21,11 +20,10 @@ public class Teacher {
 
     public Teacher(){}
 
-    public Teacher(String firstname, String lastname, String email, String username, String password) {
+    public Teacher(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.username = username;
         this.password = password;
     }
 
@@ -59,14 +57,6 @@ public class Teacher {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {

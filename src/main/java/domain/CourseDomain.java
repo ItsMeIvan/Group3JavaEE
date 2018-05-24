@@ -45,4 +45,24 @@ public class CourseDomain {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }

@@ -1,34 +1,18 @@
-package jpa;
+package jsf;
 
-import javax.persistence.*;
 
-@Entity
-public class Admin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 
+@ManagedBean
+@SessionScoped
+public class LoginBean implements Serializable {
     private String firstname;
     private String lastname;
     private String email;
     private String password;
-
-    public Admin(){}
-
-    public Admin(String firstname, String lastname, String email, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private String message;
 
     public String getFirstname() {
         return firstname;
@@ -61,4 +45,18 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String loginAction() {
+        //Edit later
+        return "result";
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }

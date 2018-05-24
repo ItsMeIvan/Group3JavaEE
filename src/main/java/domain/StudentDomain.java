@@ -1,32 +1,38 @@
-package jpa;
+package domain;
 
-import javax.persistence.*;
+public class StudentDomain {
 
-@Entity
-public class Admin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
 
-    public Admin(){}
+    public StudentDomain() {
+    }
 
-    public Admin(String firstname, String lastname, String email, String password) {
+    public StudentDomain(Long id, String firstname, String lastname, String email, String password) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+
     }
 
-    public long getId() {
+    public StudentDomain(String firstname, String lastname, String email, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,3 +68,4 @@ public class Admin {
         this.password = password;
     }
 }
+
