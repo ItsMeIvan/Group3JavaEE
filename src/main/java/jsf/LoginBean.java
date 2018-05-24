@@ -1,6 +1,9 @@
 package jsf;
 
 
+import ejb.LoginService;
+
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
@@ -13,6 +16,8 @@ public class LoginBean implements Serializable {
     private String email;
     private String password;
     private String message;
+    @EJB
+    LoginService loginService;
 
     public String getFirstname() {
         return firstname;
@@ -47,8 +52,20 @@ public class LoginBean implements Serializable {
     }
 
     public String loginAction() {
-        //Edit later
-        return "result";
+
+        String returnPage = "Login";
+
+        String person = loginService.submitLogin(email, password);
+        if(person == "student") {
+            returnPage = "index";
+        }
+        else if(person == "teacher"){}
+        else if(person == "admin"){}
+        else
+            {
+                setPassword("");
+            }
+        return returnPage;
     }
 
     public String getMessage() {

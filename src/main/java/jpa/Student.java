@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQuery(name="StudentFindByEmailAndPassword", query="SELECT s FROM Student s WHERE s.email = :email and " +
+        "s.password = :password")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

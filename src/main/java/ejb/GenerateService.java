@@ -6,5 +6,5 @@ import javax.ejb.Startup;
 
 @Remote
 public interface GenerateService {
-    void generateCourses();
+    void generateData();
 }
