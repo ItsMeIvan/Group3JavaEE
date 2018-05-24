@@ -1,5 +1,6 @@
 package jpa;
 
+import javax.ejb.Startup;
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +21,13 @@ public class Course {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Student> students;
+
+    public Course(String name) {
+        this.name = name;
+    }
+
+    public Course() {
+    }
 
     public long getId() {
         return id;

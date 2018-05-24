@@ -3,6 +3,7 @@ package ejb;
 import domain.CourseDomain;
 import jpa.Course;
 
+import javax.ejb.Startup;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ public class CourseServiceImpl implements CourseService{
 
     @PersistenceContext
     EntityManager em;
+
 
     @Override
     public void addCourse(CourseDomain course) {
@@ -42,6 +44,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public List<CourseDomain> getCourses() {
+
 
         List<Course> l = em.createNamedQuery("selectAll").getResultList();
 
