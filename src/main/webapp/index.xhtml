@@ -6,6 +6,27 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-     <h:outputLabel value="Hello, world"/>
+     <h:body>
+          <h:form>
+                <!--Skriv en datatabell som skriver upp: Kurser, Regibutton, Unregbutton, Message
+                och därefter fyll i med data från TestTables, sen testa programmet-->
+               <h:dataTable value="#{registerForCourseBean.courses}" var="p">
+                   <h:column>
+                       <h:inputHidden value="#{p.id}"/>
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header"> Course</f:facet>
+                       <h:outputText value="#{p.name}"/>
+                   </h:column>
+                   <h:column>
+                       <h:commandButton value="Register"/>
+                   </h:column>
+                   <h:column>
+                       <h:commandButton value="Unregister"/>
+                   </h:column>
+
+               </h:dataTable>
+          </h:form>
+     </h:body>
 </f:view>
 </html>

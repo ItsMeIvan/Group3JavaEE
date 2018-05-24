@@ -1,4 +1,4 @@
-package jpagroup3;
+package jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ public class TestTables {
     static EntityManager em;
 
     public static void main(String[] args){
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("jpa-example2");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("jpa-example");
         em = emFactory.createEntityManager();
 
 

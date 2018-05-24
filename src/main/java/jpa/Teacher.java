@@ -1,40 +1,39 @@
-package jpagroup3;
-//To be deleted, kept just in case it will be needed for later
+package jpa;
+
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class User {
+public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Basic
     private String firstname;
     private String lastname;
     private String email;
-    private String role;
     private String username;
     private String password;
 
+    @OneToMany
+    private List<Course> courses;
 
-    public User() {
-    }
+    public Teacher(){}
 
-    public User(String firstname, String lastname, String username, String password, String email, String role) {
+    public Teacher(String firstname, String lastname, String email, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.role = role;
         this.username = username;
         this.password = password;
-
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -62,14 +61,6 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -85,9 +76,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public static User find(Class<User> userClass, long l) {
-        return null;
-    }
-
 }

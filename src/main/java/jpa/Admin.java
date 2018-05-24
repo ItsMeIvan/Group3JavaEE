@@ -1,4 +1,4 @@
-package jpagroup3;
+package jpa;
 
 import javax.persistence.*;
 

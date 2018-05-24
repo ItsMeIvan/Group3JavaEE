@@ -1,9 +1,10 @@
-package jpagroup3;
+package jpa;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQuery(name="selectAll",query="SELECT c FROM Course c")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
