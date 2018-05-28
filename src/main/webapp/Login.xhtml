@@ -10,13 +10,12 @@
     <title>Login</title>
 </h:head>
 <h:body>
-    <h:form>
+    <h:form >
         <h:outputLabel value="Email"/><br/>
         <h:inputText value="#{loginBean.email}"/><br/>
         <h:outputLabel value="Password"></h:outputLabel><br/>
         <h:inputText value="#{loginBean.password}" type="password"/><br/><br/>
-        <h:commandButton value="Sign in" action="#{loginBean.loginAction}"/>
+        <h:commandButton value="Sign in" action="#{loginBean.loginAction()}"/>
     </h:form>
-
 </h:body>
 </html>

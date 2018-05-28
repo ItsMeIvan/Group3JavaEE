@@ -1,11 +1,15 @@
 package jpa;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@NamedQuery(name="StudentFindByEmailAndPassword", query="SELECT s FROM Student s WHERE s.email = :email and " +
-        "s.password = :password")
+@NamedQueries({
+        @NamedQuery(name="StudentFindByEmailAndPassword", query ="SELECT s FROM Student s WHERE s.email = :email and " +
+        "s.password = :password"),
+        @NamedQuery(name="GetAllStudents", query="SELECT s FROM Student s ")
+        })
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +33,18 @@ public class Student {
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getFirstname() {
@@ -55,11 +71,15 @@ public class Student {
         this.email = email;
     }
 
-    public String getPassword() {
+    public String getPassword(String s) {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+
 }
+
