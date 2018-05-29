@@ -19,8 +19,8 @@
             <h:inputText value="#{registerBean.password}"/>
             <h:outputText value="Role"/>
             <h:selectOneMenu value = "#{registerBean.role}">
-                <f:selectItem itemValue="Teacher" itemLabel="Teacher"/>
                 <f:selectItem itemValue="Student" itemLabel="Student"/>
+                <f:selectItem itemValue="Teacher" itemLabel="Teacher"/>
             </h:selectOneMenu>
             <h:commandButton value="Register" action="#{registerBean.register()}"/>
         </div>

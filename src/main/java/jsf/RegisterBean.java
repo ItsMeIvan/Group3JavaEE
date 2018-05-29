@@ -77,21 +77,6 @@ public class RegisterBean implements Serializable {
         this.message = message;
     }
 
-    public void register() {
-
-
-
-        RegisterDomain rd = new RegisterDomain();
-        rd.setId(getId());
-        rd.setFirstname(getFirstname());
-        rd.setLastname(getLastname());
-        rd.setEmail(getEmail());
-        rd.setPassword(getPassword());
-        rd.setRole(getRole());
-        registerService.registerUser(rd);
-    }
-
-
     public String getRole() {
         return role;
     }
@@ -106,5 +91,24 @@ public class RegisterBean implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void register() {
+        RegisterDomain rd = new RegisterDomain();
+        rd.setFirstname(getFirstname());
+        rd.setLastname(getLastname());
+        rd.setEmail(getEmail());
+        rd.setPassword(getPassword());
+        rd.setRole(getRole());
+        registerService.registerUser(rd);
+        clearRegister();
+    }
+
+    private void clearRegister(){
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setPassword("");
+        setMessage("User registered!");
     }
 }
