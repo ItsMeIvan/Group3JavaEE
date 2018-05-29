@@ -16,7 +16,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public String submitLogin(String email, String password) {
-        String user = "Login";
+        String userRole = "Login";
 
         Query query = em.createNamedQuery("StudentFindByEmailAndPassword");
         query.setParameter("email", email);
@@ -24,8 +24,8 @@ public class LoginServiceImpl implements LoginService {
 
         List<Student> s = query.getResultList();
         if (s.size()>0) {
-            user = "student";
+            userRole = "student";
         }
-        return user;
+        return userRole;
     }
 }

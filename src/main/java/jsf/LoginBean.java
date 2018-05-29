@@ -53,7 +53,7 @@ public class LoginBean implements Serializable {
 
     public String loginAction() {
 
-        String returnPage = "Login";
+        String returnPage = "login";
 
         String person = loginService.submitLogin(email, password);
         if(person == "student") {

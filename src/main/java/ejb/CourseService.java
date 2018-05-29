@@ -8,8 +8,9 @@ import java.util.List;
 @Local
 public interface CourseService {
     void addCourse(CourseDomain course);
-    void updateCourse(CourseDomain person);
+    void updateCourse(CourseDomain course);
     CourseDomain getCourse(Long id);
     void removeCourse(Long id);
     List<CourseDomain> getCourses();
+    void unregisterCourse(CourseDomain course, Long studentId);
 }

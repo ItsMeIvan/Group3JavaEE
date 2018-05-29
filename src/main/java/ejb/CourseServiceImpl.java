@@ -2,6 +2,7 @@ package ejb;
 
 import domain.CourseDomain;
 import jpa.Course;
+import jpa.Student;
 
 import javax.ejb.Startup;
 import javax.ejb.Stateful;
@@ -28,8 +29,8 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void updateCourse(CourseDomain person) {
-
+    public void updateCourse(CourseDomain course) {
+        //Student student = em.find();
     }
 
     @Override
@@ -51,5 +52,10 @@ public class CourseServiceImpl implements CourseService{
         return l.stream().
                 map(c->new CourseDomain(c.getId(),c.getName())).
                 collect(Collectors.toList());
+    }
+
+    @Override
+    public void unregisterCourse(CourseDomain course, Long studentId) {
+
     }
 }
