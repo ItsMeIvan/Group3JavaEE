@@ -2,6 +2,7 @@ package jpa;
 
 import javax.ejb.Startup;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -49,6 +50,40 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public void addAttendances(Attendance attendance){
+        if ( attendances == null )
+            attendances = new ArrayList<>();
+        this.attendances.add(attendance);
+
+    }
+
+    public void addStudents(Student student){
+        if ( students == null )
+            students = new ArrayList<>();
+        this.students.add(student);
+
     }
 }
 

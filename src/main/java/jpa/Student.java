@@ -2,6 +2,7 @@ package jpa;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -79,6 +80,34 @@ public class Student {
         this.password = password;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
+    }
+
+    public void addCourses(Course course){
+        if ( courses == null )
+            courses = new ArrayList<>();
+        this.courses.add(course);
+
+    }
+    public void addAttendances(Attendance attendance){
+        if ( attendances == null )
+            attendances = new ArrayList<>();
+        this.attendances.add(attendance);
+
+    }
 
 
 }
