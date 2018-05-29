@@ -85,5 +85,9 @@ public class Course {
         this.students.add(student);
 
     }
+
+    public void removeStudent(Student student){
+        this.students.remove(student);
+    }
 }
 

@@ -1,6 +1,7 @@
 package ejb;
 
 import jpa.Student;
+import jsf.LoginBean;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,10 +14,11 @@ public class LoginServiceImpl implements LoginService {
 
     @PersistenceContext
     private EntityManager em;
+    private String userRole = "Login";
+    private Long id;
 
     @Override
-    public String submitLogin(String email, String password) {
-        String userRole = "Login";
+    public void submitLogin(String email, String password) {
 
         Query query = em.createNamedQuery("StudentFindByEmailAndPassword");
         query.setParameter("email", email);
@@ -24,8 +26,28 @@ public class LoginServiceImpl implements LoginService {
 
         List<Student> s = query.getResultList();
         if (s.size()>0) {
-            userRole = "student";
+            setId(s.get(0).getId());
+            setUserRole("student");
         }
+    }
+
+    @Override
+    public void setUserRole(String role) {
+        this.userRole = role;
+    }
+
+    @Override
+    public String getUserRole() {
         return userRole;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 }

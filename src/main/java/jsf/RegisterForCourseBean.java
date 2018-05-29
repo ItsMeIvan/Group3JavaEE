@@ -30,10 +30,8 @@ public class RegisterForCourseBean {
         this.courses = courses;
     }
 
-    public void unRegisterCourse(CourseDomain c, Long studentId){
-        courseService.unregisterCourse(c, studentId);
-
-
+    public void unRegisterCourse(Long courseId, Long studentId){
+        courseService.unregisterCourse(courseId, studentId);
 
     }
 }

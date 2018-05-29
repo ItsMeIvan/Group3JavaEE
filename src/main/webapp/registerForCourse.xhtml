@@ -21,7 +21,7 @@
                        <h:commandButton value="Register"/>
                    </h:column>
                    <h:column>
-                       <h:commandButton action="#{registerForCourseBean.unRegisterCourse(p, )}" value="Unregister"/>
+                       <h:commandButton action="#{registerForCourseBean.unRegisterCourse(p.id, loginBean.id)}" value="Unregister"/>
                    </h:column>
 
                </h:dataTable>

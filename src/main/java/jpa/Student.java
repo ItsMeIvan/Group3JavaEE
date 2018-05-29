@@ -102,6 +102,12 @@ public class Student {
         this.courses.add(course);
 
     }
+
+    public void removeCourse(Course course){
+        this.courses.remove(course);
+
+    }
+
     public void addAttendances(Attendance attendance){
         if ( attendances == null )
             attendances = new ArrayList<>();

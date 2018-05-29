@@ -11,5 +11,9 @@ import domain.StudentDomain;
 
 @Local
 public interface LoginService {
-    String submitLogin(String email, String password);
+    void submitLogin(String email, String password);
+    void setUserRole(String role);
+    String getUserRole();
+    void setId(Long id);
+    Long getId();
 }

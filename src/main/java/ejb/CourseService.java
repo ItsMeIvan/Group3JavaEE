@@ -12,5 +12,5 @@ public interface CourseService {
     CourseDomain getCourse(Long id);
     void removeCourse(Long id);
     List<CourseDomain> getCourses();
-    void unregisterCourse(CourseDomain course, Long studentId);
+    void unregisterCourse(Long course, Long studentId);
 }

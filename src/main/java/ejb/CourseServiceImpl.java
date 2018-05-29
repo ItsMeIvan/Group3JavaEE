@@ -55,7 +55,10 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void unregisterCourse(CourseDomain course, Long studentId) {
+    public void unregisterCourse(Long courseId, Long studentId) {
+        Student student = em.find(Student.class, studentId);
+        Course course = em.find(Course.class, courseId);
+        student.removeCourse(course);
 
     }
 }
