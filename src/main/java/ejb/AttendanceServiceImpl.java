@@ -36,7 +36,6 @@ public class AttendanceServiceImpl implements AttendanceService {
                 }
             }
 
-            //Ta bort decimalerna
             double totalAttendance = presence/list.size() * 100;
             statistic.setLength(0);
             statistic.append(totalAttendance).setLength(statistic.indexOf("."));

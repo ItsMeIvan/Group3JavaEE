@@ -2,6 +2,8 @@ package jpa;
 
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -12,6 +14,7 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
     private boolean presence;
 
@@ -23,7 +26,7 @@ public class Attendance {
 
     public Attendance(){}
 
-    public Attendance(Date date, boolean presence, Course course, Student student) {
+    public Attendance(Date date, boolean presence, Course course, Student student) throws ParseException {
         this.date = date;
         this.presence = presence;
         this.course = course;

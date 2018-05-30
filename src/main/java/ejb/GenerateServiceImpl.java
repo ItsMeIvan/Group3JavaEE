@@ -12,6 +12,7 @@ import javax.ejb.Startup;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -54,25 +55,35 @@ public class GenerateServiceImpl implements GenerateService {
         t2.addCourses(c3);
         em.persist(c3);
 
-        //Date sparas some 1970-01.01 i databasen
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        Date d1 = new Date(2017-05-03);
-        Date d2 = new Date(2017-05-04);
-        Date d3 = new Date(2017-05-05);
+        //Date sparas med korrekta datum, men det visar 00:00:00, kan man fixa det?
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date d1 = new Date();
+        Date d2 = new Date();
+        Date d3 = new Date();
+        try {
+            d1=formatter.parse("2014-11-04");
+            d2=formatter.parse("2014-11-05");
+            d3=formatter.parse("2014-11-06");
 
-        Attendance a1 = new Attendance(d1, false, c1, s1);
-        Attendance a2 = new Attendance(d1, false, c2, s1);
-        Attendance a3 = new Attendance(d2, true, c1, s1);
-        Attendance a4 = new Attendance(d2, true, c2, s1);
-        Attendance a5 = new Attendance(d3, true, c1, s1);
-        Attendance a6 = new Attendance(d3, false, c2, s1);
 
-        em.persist(a1);
-        em.persist(a2);
-        em.persist(a3);
-        em.persist(a4);
-        em.persist(a5);
-        em.persist(a6);
+            Attendance a1 = new Attendance(d1, false, c1, s1);
+            Attendance a2 = new Attendance(d1, false, c2, s1);
+            Attendance a3 = new Attendance(d2, true, c1, s1);
+            Attendance a4 = new Attendance(d2, true, c2, s1);
+            Attendance a5 = new Attendance(d3, true, c1, s1);
+            Attendance a6 = new Attendance(d3, false, c2, s1);
+
+            em.persist(a1);
+            em.persist(a2);
+            em.persist(a3);
+            em.persist(a4);
+            em.persist(a5);
+            em.persist(a6);
+
+            } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
