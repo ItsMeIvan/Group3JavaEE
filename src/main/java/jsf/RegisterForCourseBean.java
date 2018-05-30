@@ -30,8 +30,19 @@ public class RegisterForCourseBean {
         this.courses = courses;
     }
 
+
+    public void registerCourse(Long courseId, Long studentId){
+        courseService.registerCourse(courseId, studentId);
+
+    }
+
+
     public void unRegisterCourse(Long courseId, Long studentId){
         courseService.unregisterCourse(courseId, studentId);
 
+    }
+
+    public StringBuilder checkRegister(Long courseId, Long studentId){
+        return courseService.checkRegister(courseId, studentId);
     }
 }

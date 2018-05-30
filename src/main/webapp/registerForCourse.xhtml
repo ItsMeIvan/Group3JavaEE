@@ -11,17 +11,17 @@
                 <!--Skriv en datatabell som skriver upp: Kurser, Regibutton, Unregbutton, Message-->
                <h:dataTable value="#{registerForCourseBean.courses}" var="p">
                    <h:column>
-                       <h:inputHidden value="#{p.id}"/>
-                   </h:column>
-                   <h:column>
                        <f:facet name="header"> Course</f:facet>
                        <h:outputText value="#{p.name}"/>
                    </h:column>
                    <h:column>
-                       <h:commandButton value="Register"/>
+                       <h:commandButton action="#{registerForCourseBean.registerCourse(p.id, loginBean.id)}" value="Register"/>
                    </h:column>
                    <h:column>
                        <h:commandButton action="#{registerForCourseBean.unRegisterCourse(p.id, loginBean.id)}" value="Unregister"/>
+                   </h:column>
+                   <h:column>
+                       <h:outputLabel value="#{registerForCourseBean.checkRegister(p.id, loginBean.id)}"/>
                    </h:column>
 
                </h:dataTable>

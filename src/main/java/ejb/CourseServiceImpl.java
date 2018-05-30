@@ -55,10 +55,28 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public void registerCourse(Long courseId, Long studentId) {
+        Student student = em.find(Student.class, studentId);
+        Course course = em.find(Course.class, courseId);
+        student.addCourses(course);
+    }
+
+    @Override
     public void unregisterCourse(Long courseId, Long studentId) {
         Student student = em.find(Student.class, studentId);
         Course course = em.find(Course.class, courseId);
         student.removeCourse(course);
+    }
 
+    @Override
+    public StringBuilder checkRegister(Long courseId, Long studentId) {
+        StringBuilder register = new StringBuilder("Unregistered");
+        Student student = em.find(Student.class, studentId);
+        Course course = em.find(Course.class, courseId);
+        if(student.getCourses().contains(course)){
+            register.setLength(0);
+            register.append("Registered");
+        }
+        return register;
     }
 }
