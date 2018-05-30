@@ -1,5 +1,10 @@
 package domain;
 
+import jpa.Attendance;
+import jpa.Course;
+
+import java.util.List;
+
 public class StudentDomain {
 
     private Long id;
@@ -7,25 +12,29 @@ public class StudentDomain {
     private String lastname;
     private String email;
     private String password;
+    private List<Course> courses;
+    private List<Attendance> attendances;
 
     public StudentDomain() {
     }
 
-    public StudentDomain(Long id, String firstname, String lastname, String email, String password) {
+    public StudentDomain(Long id, String firstname, String lastname, String email, String password, List<Course> courses, List<Attendance> attendances) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-
+        this.courses = courses;
+        this.attendances = attendances;
     }
 
-    public StudentDomain(String firstname, String lastname, String email, String password) {
+    public StudentDomain(String firstname, String lastname, String email, String password, List<Course> courses, List<Attendance> attendances) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-
+        this.courses = courses;
+        this.attendances = attendances;
     }
 
     public Long getId() {
@@ -66,6 +75,22 @@ public class StudentDomain {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
     }
 }
 
