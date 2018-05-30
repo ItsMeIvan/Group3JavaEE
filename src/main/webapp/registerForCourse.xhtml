@@ -23,6 +23,9 @@
                    <h:column>
                        <h:outputLabel value="#{registerForCourseBean.checkRegister(p.id, loginBean.id)}"/>
                    </h:column>
+                   <h:column>
+                       <h:outputLabel value="#{registerForCourseBean.getAttendanceStatistics(p.id, loginBean.id)}"/>
+                   </h:column>
 
                </h:dataTable>
           </h:form>

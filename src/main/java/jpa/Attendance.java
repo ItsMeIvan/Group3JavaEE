@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@NamedQuery(name="AttendanceFindByCourseAndUser", query ="SELECT a FROM Attendance a WHERE a.student = :student and " +
+        "a.course = :course")
 public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +23,11 @@ public class Attendance {
 
     public Attendance(){}
 
-    public Attendance(Date date, boolean presence) {
+    public Attendance(Date date, boolean presence, Course course, Student student) {
         this.date = date;
         this.presence = presence;
+        this.course = course;
+        this.student = student;
     }
 
     public long getId() {
@@ -65,6 +69,7 @@ public class Attendance {
     public void setStudent(Student student) {
         this.student = student;
     }
+
 
 
 }

@@ -1,10 +1,7 @@
 package jsf;
 
 import domain.CourseDomain;
-import ejb.CourseService;
-import ejb.CourseServiceImpl;
-import ejb.LoginService;
-import ejb.StudentService;
+import ejb.*;
 import jpa.Course;
 
 import javax.ejb.EJB;
@@ -20,7 +17,7 @@ public class RegisterForCourseBean {
     @EJB
     CourseService courseService;
     @EJB
-    LoginService loginService;
+    AttendanceService attendanceService;
 
     public List<CourseDomain> getCourses() {
         return courseService.getCourses();
@@ -36,7 +33,6 @@ public class RegisterForCourseBean {
 
     }
 
-
     public void unRegisterCourse(Long courseId, Long studentId){
         courseService.unregisterCourse(courseId, studentId);
 
@@ -44,5 +40,9 @@ public class RegisterForCourseBean {
 
     public StringBuilder checkRegister(Long courseId, Long studentId){
         return courseService.checkRegister(courseId, studentId);
+    }
+
+    public StringBuilder getAttendanceStatistics(Long courseId, Long studentId){
+        return attendanceService.getAttendanceStatistics(courseId, studentId);
     }
 }
