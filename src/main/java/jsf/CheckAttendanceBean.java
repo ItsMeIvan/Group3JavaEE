@@ -20,8 +20,15 @@ public class CheckAttendanceBean {
     @EJB
     StudentService studentService;
 
+    @EJB
+    CourseService courseService;
+
     public List<StudentDomain> getStudents() {
         return studentService.getStudents();
+    }
+
+    public List<CourseDomain> getCourses(Long teacherId) {
+        return courseService.getCoursesFromTeacher(teacherId);
     }
 
 

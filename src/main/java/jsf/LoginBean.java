@@ -71,8 +71,12 @@ public class LoginBean implements Serializable {
 
             returnPage = "registerForCourse";
         }
-        else if(role == "teacher"){}
-        else if(role == "admin"){}
+        else if(role == "teacher"){
+            returnPage = "checkAttendance";
+        }
+        else if(role == "admin"){
+            returnPage = "registerUser";
+        }
         else
             {
                 setPassword("");

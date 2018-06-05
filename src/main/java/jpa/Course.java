@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQuery(name="selectAll",query="SELECT c FROM Course c")
+@NamedQueries({
+        @NamedQuery(name = "selectAll", query = "SELECT c FROM Course c"),
+        @NamedQuery(name = "selectCoursesFromTeacher", query = "SELECT c FROM Course c where c.teacher=:teacher")
+})
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

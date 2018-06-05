@@ -15,5 +15,5 @@ public interface CourseService {
     void registerCourse(Long courseId, Long studentId);
     void unregisterCourse(Long course, Long studentId);
     StringBuilder checkRegister(Long courseId, Long studentId);
-
+    List<CourseDomain> getCoursesFromTeacher(Long teacherId);
 }

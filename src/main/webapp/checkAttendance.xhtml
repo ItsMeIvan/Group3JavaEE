@@ -6,11 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
+    <body>
     <!--Dropdown table med kurserna, En table som laddar kursernas elever. En knapp för att registrera
      checken för närvaron-->
-    
-    <h:outputLabel value="Hello, world"/>
-    <h:dataTable value="#{checkAttendanceBean.students}" var="s">
+    <h:form>
+        <!--av nån anledning kan jag inte skriva c.name, kolla vad problemet är-->
+        <h:selectOneMenu value="#{checkAttendanceBean.getCourses(loginBean.id)}" var ="c">
+            <f:selectItem value="#{c.name}"/>
+        </h:selectOneMenu>
+        <h:dataTable value="#{checkAttendanceBean.students}" var="s">
         <h:column>
             <f:facet name="header"> Students</f:facet>
             <h:outputText value="#{s.firstname}"/>
@@ -22,5 +26,7 @@
             <h:outputText value="#{s.email}"/>
         </h:column>
     </h:dataTable>
+    </h:form>
+    </body>
 </f:view>
 </html>

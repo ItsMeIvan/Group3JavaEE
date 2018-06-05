@@ -1,6 +1,7 @@
 package ejb;
 
 import jpa.Student;
+import jpa.Teacher;
 import jsf.LoginBean;
 
 import javax.ejb.Stateless;
@@ -20,14 +21,24 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public void submitLogin(String email, String password) {
 
-        Query query = em.createNamedQuery("StudentFindByEmailAndPassword");
-        query.setParameter("email", email);
-        query.setParameter("password", password);
-
-        List<Student> s = query.getResultList();
+        Query queryS = em.createNamedQuery("StudentFindByEmailAndPassword");
+        queryS.setParameter("email", email);
+        queryS.setParameter("password", password);
+        List<Student> s = queryS.getResultList();
         if (s.size()>0) {
             setId(s.get(0).getId());
             setUserRole("student");
+            return;
+        }
+
+        Query queryT = em.createNamedQuery("TeacherFindByEmailAndPassword");
+        queryT.setParameter("email", email);
+        queryT.setParameter("password", password);
+        List<Teacher> t = queryT.getResultList();
+        if (t.size()>0) {
+            setId(t.get(0).getId());
+            setUserRole("teacher");
+            return;
         }
     }
 

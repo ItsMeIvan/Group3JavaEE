@@ -2,6 +2,12 @@
 
 Create a Database called "group3db" in pgAdmin4
 
+All of the user examples have the password "12345" (please dont do this in real life)
+To login as a student: is@mail.com
+To login as a teacher: aa@mail.com
+
+
+
 Create the following:
 
 1. Pages

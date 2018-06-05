@@ -3,6 +3,7 @@ package ejb;
 import domain.CourseDomain;
 import jpa.Course;
 import jpa.Student;
+import jpa.Teacher;
 
 import javax.ejb.Startup;
 import javax.ejb.Stateful;
@@ -79,4 +80,18 @@ public class CourseServiceImpl implements CourseService{
         }
         return register;
     }
+
+    @Override
+    public List<CourseDomain> getCoursesFromTeacher(Long teacherId) {
+        Teacher teacher = em.find(Teacher.class, teacherId);
+        Query query = em.createNamedQuery("selectCoursesFromTeacher");
+        query.setParameter("teacher", teacher);
+
+        List<Course> lc = query.getResultList();
+        return lc.stream().
+                map(c->new CourseDomain(c.getId(),c.getName())).
+                collect(Collectors.toList());
+    }
+
+
 }
