@@ -11,7 +11,7 @@
      checken för närvaron-->
     <h:form>
         <!--av nån anledning kan jag inte skriva c.name, kolla vad problemet är-->
-        <h:selectOneMenu value="#{checkAttendanceBean.getCourses(loginBean.id)}" var ="c">
+        <h:selectOneMenu value="#{checkAttendanceBean.courses}" var ="c">
             <f:selectItem value="#{c.name}"/>
         </h:selectOneMenu>
         <h:dataTable value="#{checkAttendanceBean.students}" var="s">

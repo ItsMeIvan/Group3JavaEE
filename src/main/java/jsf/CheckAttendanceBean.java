@@ -27,8 +27,9 @@ public class CheckAttendanceBean {
         return studentService.getStudents();
     }
 
-    public List<CourseDomain> getCourses(Long teacherId) {
-        return courseService.getCoursesFromTeacher(teacherId);
+    public List<CourseDomain> getCourses() {
+        LoginBean loginBean = new LoginBean();
+        return courseService.getCoursesFromTeacher(loginBean.getId());
     }
 
 
