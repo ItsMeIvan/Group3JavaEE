@@ -84,13 +84,13 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<CourseDomain> getCoursesFromTeacher(Long teacherId) {
         Teacher teacher = em.find(Teacher.class, teacherId);
-        Query query = em.createNamedQuery("selectCoursesFromTeacher");
-        query.setParameter("teacher", teacher);
 
-        List<Course> lc = query.getResultList();
-        return lc.stream().
+        em.refresh(teacher);
+
+        return teacher.getCourses().stream().
                 map(c->new CourseDomain(c.getId(),c.getName())).
                 collect(Collectors.toList());
+
     }
 
 

@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQuery(name="TeacherFindByEmailAndPassword", query ="SELECT t FROM Teacher t WHERE t.email = :email and " +
-        "t.password = :password")
+@NamedQueries({
+        @NamedQuery(name = "TeacherFindByEmailAndPassword", query = "SELECT t FROM Teacher t WHERE t.email = :email and " +
+                "t.password = :password")
+})
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

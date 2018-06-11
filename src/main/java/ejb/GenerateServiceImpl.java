@@ -55,7 +55,7 @@ public class GenerateServiceImpl implements GenerateService {
         t2.addCourses(c3);
         em.persist(c3);
 
-        //Date sparas med korrekta datum, men det visar 00:00:00, kan man fixa det?
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date d1 = new Date();
         Date d2 = new Date();

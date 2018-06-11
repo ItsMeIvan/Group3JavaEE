@@ -6,6 +6,7 @@ import ejb.AttendanceService;
 import ejb.CourseService;
 import ejb.StudentService;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,7 +17,6 @@ import java.util.List;
 public class CheckAttendanceBean {
     private List<StudentDomain> students;
     private List<CourseDomain> courses;
-
     @EJB
     StudentService studentService;
 
@@ -27,11 +27,16 @@ public class CheckAttendanceBean {
         return studentService.getStudents();
     }
 
-    public List<CourseDomain> getCourses() {
-        LoginBean loginBean = new LoginBean();
-        return courseService.getCoursesFromTeacher(loginBean.getId());
+
+    public void getCoursesFromTeacher(long id) {
+        courses = courseService.getCoursesFromTeacher(id);
     }
 
+    public List<CourseDomain> getCourses() {
+        return courses;
+    }
 
-
+    public void setCourses(List<CourseDomain> courses) {
+        this.courses = courses;
+    }
 }

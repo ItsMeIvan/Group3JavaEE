@@ -7,9 +7,9 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "selectAll", query = "SELECT c FROM Course c"),
-        @NamedQuery(name = "selectCoursesFromTeacher", query = "SELECT c FROM Course c where c.teacher=:teacher")
+        @NamedQuery(name = "selectAll", query = "SELECT c FROM Course c")
 })
+//selectCoursesFromTeacher fungerar inte
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Course {
     private String name;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Teacher teacher;
 
     @OneToMany(fetch = FetchType.LAZY) //Check what CascadeType is and if we need it

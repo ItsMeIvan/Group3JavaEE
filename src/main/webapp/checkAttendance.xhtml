@@ -5,15 +5,19 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{checkAttendanceBean.getCoursesFromTeacher(loginBean.id)}"/>
+        </f:metadata>
 <f:view>
     <body>
-    <!--Dropdown table med kurserna, En table som laddar kursernas elever. En knapp för att registrera
-     checken för närvaron-->
     <h:form>
-        <!--av nån anledning kan jag inte skriva c.name, kolla vad problemet är-->
-        <h:selectOneMenu value="#{checkAttendanceBean.courses}" var ="c">
-            <f:selectItem value="#{c.name}"/>
-        </h:selectOneMenu>
+        <f:facet name="header"> Courses</f:facet>
+        <h:dataTable value="#{checkAttendanceBean.courses}" var="c">
+            <h:column>
+                <h:commandButton value="#{c.name}"/>
+            </h:column>
+        </h:dataTable>
+
         <h:dataTable value="#{checkAttendanceBean.students}" var="s">
         <h:column>
             <f:facet name="header"> Students</f:facet>
