@@ -15,5 +15,6 @@ public interface StudentService {
     StudentDomain getStudent(Long id);
     void removeStudent(Long id);
     List<StudentDomain> getStudents();
+    List<StudentDomain> getStudentsFromCourses(long courseId);
 
 }

@@ -24,7 +24,11 @@ public class CheckAttendanceBean {
     CourseService courseService;
 
     public List<StudentDomain> getStudents() {
-        return studentService.getStudents();
+        return students;
+    }
+
+    public void getStudentsFromCourse(long courseId){
+        students = studentService.getStudentsFromCourses(courseId);
     }
 
 

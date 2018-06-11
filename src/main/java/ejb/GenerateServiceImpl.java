@@ -26,6 +26,7 @@ public class GenerateServiceImpl implements GenerateService {
     @Override
     public void generateData() {
 
+
         Student s1 = new Student("Ivan","Saric","is@mail.com","12345");
         Student s2 = new Student("Jon","Stone","js@mail.com","12345");
         em.persist(s1);
@@ -83,7 +84,6 @@ public class GenerateServiceImpl implements GenerateService {
             } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
     }
 }

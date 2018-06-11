@@ -100,11 +100,13 @@ public class Student {
         if ( courses == null )
             courses = new ArrayList<>();
         this.courses.add(course);
+        course.getStudents().add(this);
 
     }
 
     public void removeCourse(Course course){
         this.courses.remove(course);
+        course.getStudents().remove(this);
 
     }
 

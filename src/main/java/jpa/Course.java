@@ -23,7 +23,7 @@ public class Course {
     @OneToMany(fetch = FetchType.LAZY) //Check what CascadeType is and if we need it
     private List<Attendance> attendances;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private List<Student> students;
 
     public Course(String name) {
@@ -43,6 +43,8 @@ public class Course {
 
 
     public List<Student> getStudents() {
+        if ( students == null )
+            students = new ArrayList<>();
         return students;
     }
 

@@ -37,6 +37,12 @@ public class StudentDomain {
         this.attendances = attendances;
     }
 
+    public StudentDomain(String firstname, String lastname, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
