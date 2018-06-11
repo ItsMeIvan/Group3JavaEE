@@ -14,6 +14,7 @@ public class StudentDomain {
     private String password;
     private List<Course> courses;
     private List<Attendance> attendances;
+    private Boolean presence;
 
     public StudentDomain() {
     }
@@ -97,6 +98,14 @@ public class StudentDomain {
 
     public void setAttendances(List<Attendance> attendances) {
         this.attendances = attendances;
+    }
+
+    public Boolean getPresence() {
+        return presence;
+    }
+
+    public void setPresence(Boolean presence) {
+        this.presence = presence;
     }
 }
 

@@ -17,6 +17,7 @@ import java.util.List;
 public class CheckAttendanceBean {
     private List<StudentDomain> students;
     private List<CourseDomain> courses;
+    private Long currentCourseId;
     @EJB
     StudentService studentService;
 
@@ -28,6 +29,7 @@ public class CheckAttendanceBean {
     }
 
     public void getStudentsFromCourse(long courseId){
+        currentCourseId = courseId;
         students = studentService.getStudentsFromCourses(courseId);
     }
 
@@ -42,5 +44,9 @@ public class CheckAttendanceBean {
 
     public void setCourses(List<CourseDomain> courses) {
         this.courses = courses;
+    }
+
+    public void SaveAttendances(){
+        
     }
 }

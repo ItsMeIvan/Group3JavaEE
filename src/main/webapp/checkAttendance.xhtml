@@ -34,9 +34,10 @@
         </h:column>
         <h:column>
             <f:facet name="header"> Attendance</f:facet>
-            <input type="checkbox"/>
+            <input type="checkbox" class="checked" value="#{s.presence}"/>
         </h:column>
     </h:dataTable>
+        <h:commandButton value="Save" action="#{checkAttendanceBean.SaveAttendances()}"/>
     </h:form>
     </body>
 </f:view>
