@@ -52,7 +52,7 @@ public class CourseServiceImpl implements CourseService{
 
         return l.stream().
                 map(c->new CourseDomain(c.getId(),c.getName())).
-                collect(Collectors.toList());
+                 collect(Collectors.toList());
     }
 
     @Override

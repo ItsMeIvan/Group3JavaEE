@@ -2,9 +2,9 @@ package ejb;
 
 import jpa.Course;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
-@Remote
+@Local
 public interface AttendanceService {
     StringBuilder getAttendanceStatistics(Long courseId, Long studentId);
 }

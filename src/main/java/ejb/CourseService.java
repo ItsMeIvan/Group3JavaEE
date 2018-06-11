@@ -13,7 +13,7 @@ public interface CourseService {
     void removeCourse(Long id);
     List<CourseDomain> getCourses();
     void registerCourse(Long courseId, Long studentId);
-    void unregisterCourse(Long course, Long studentId);
+    void unregisterCourse(Long courseId, Long studentId);
     StringBuilder checkRegister(Long courseId, Long studentId);
     List<CourseDomain> getCoursesFromTeacher(Long teacherId);
 }

@@ -1,10 +1,11 @@
 package ejb;
 
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
+
 import javax.ejb.Startup;
 
-@Remote
+@Local
 public interface GenerateService {
     void generateData();
 }

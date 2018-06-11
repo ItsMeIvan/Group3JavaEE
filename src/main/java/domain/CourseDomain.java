@@ -17,6 +17,9 @@ public class CourseDomain {
 
     private List<Student> students;
 
+    public CourseDomain() {
+    }
+
     public CourseDomain(long id, String name) {
         this.id = id;
         this.name = name;
