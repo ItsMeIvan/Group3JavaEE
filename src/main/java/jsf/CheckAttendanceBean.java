@@ -59,4 +59,9 @@ public class CheckAttendanceBean {
         else
             s.setPresence(false);
     }
+
+    public StringBuilder getAttendanceStatistics(Long courseid){
+        return attendanceService.getCourseStatistics(courseid);
+
+    }
 }

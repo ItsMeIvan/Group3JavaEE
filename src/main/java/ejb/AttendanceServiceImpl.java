@@ -94,4 +94,29 @@ public class AttendanceServiceImpl implements AttendanceService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public StringBuilder getCourseStatistics(Long courseid) {
+        StringBuilder statistic = new StringBuilder("There is no data on this courses attendance");
+        Query query = em.createNamedQuery("AttendanceFindByCourse");
+        query.setParameter("courseid", courseid);
+
+        List<Attendance> list = query.getResultList();
+        if (list.size()>0) {
+            double presence = 0.0d;
+            for (Attendance a: list) {
+                if(a.isPresence())
+                {
+                    presence++;
+                }
+            }
+
+            double totalAttendance = presence/list.size() * 100;
+            statistic.setLength(0);
+            statistic.append(totalAttendance).setLength(statistic.indexOf("."));
+            statistic.append("%");
+
+        }
+        return statistic;
+    }
 }

@@ -14,7 +14,12 @@
         <f:facet name="header"> Courses</f:facet>
         <h:dataTable value="#{checkAttendanceBean.courses}" var="c">
             <h:column>
+                <f:facet name="header">Courses</f:facet>
                 <h:commandButton value="#{c.name}" action="#{checkAttendanceBean.getStudentsFromCourse(c.id)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Attendance Rate</f:facet>
+                <h:outputLabel value="#{checkAttendanceBean.getAttendanceStatistics(c.id)}"/>
             </h:column>
         </h:dataTable>
 

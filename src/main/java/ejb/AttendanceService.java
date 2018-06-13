@@ -10,4 +10,6 @@ import java.util.List;
 public interface AttendanceService {
     StringBuilder getAttendanceStatistics(Long courseId, Long studentId);
     void saveAttendances(List<StudentDomain> students, Long currentCourseId);
+
+    StringBuilder getCourseStatistics(Long courseid);
 }
