@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService{
         Course c = em.find(Course.class, courseId);
         em.refresh(c);
         return c.getStudents().stream().
-                map(s->new StudentDomain(s.getFirstname(), s.getLastname(), s.getEmail())).
+                map(s->new StudentDomain(s.getId(),s.getFirstname(), s.getLastname(), s.getEmail())).
                 collect(Collectors.toList());
     }
 }

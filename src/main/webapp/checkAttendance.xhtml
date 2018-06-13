@@ -34,7 +34,9 @@
         </h:column>
         <h:column>
             <f:facet name="header"> Attendance</f:facet>
-            <input type="checkbox" class="checked" value="#{s.presence}"/>
+            <h:selectBooleanCheckbox value="#{s.presence}" >
+                <f:ajax listener="#{checkAttendanceBean.changePresence(s)}"/>
+            </h:selectBooleanCheckbox>
         </h:column>
     </h:dataTable>
         <h:commandButton value="Save" action="#{checkAttendanceBean.SaveAttendances()}"/>

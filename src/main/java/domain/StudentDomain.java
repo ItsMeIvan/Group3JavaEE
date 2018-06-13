@@ -14,7 +14,7 @@ public class StudentDomain {
     private String password;
     private List<Course> courses;
     private List<Attendance> attendances;
-    private Boolean presence;
+    private Boolean presence = false;
 
     public StudentDomain() {
     }
@@ -39,6 +39,13 @@ public class StudentDomain {
     }
 
     public StudentDomain(String firstname, String lastname, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
+
+    public StudentDomain(Long id, String firstname, String lastname, String email) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

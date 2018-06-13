@@ -24,6 +24,9 @@ public class CheckAttendanceBean {
     @EJB
     CourseService courseService;
 
+    @EJB
+    AttendanceService attendanceService;
+
     public List<StudentDomain> getStudents() {
         return students;
     }
@@ -47,6 +50,13 @@ public class CheckAttendanceBean {
     }
 
     public void SaveAttendances(){
-        
+        attendanceService.saveAttendances(students, currentCourseId);
+    }
+
+    public void changePresence(StudentDomain s){
+        if(s.getPresence() != true)
+            s.setPresence(true);
+        else
+            s.setPresence(false);
     }
 }

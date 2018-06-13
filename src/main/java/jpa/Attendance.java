@@ -7,8 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@NamedQuery(name="AttendanceFindByCourseAndUser", query ="SELECT a FROM Attendance a WHERE a.student = :student and " +
-        "a.course = :course")
+@NamedQueries({
+        @NamedQuery(name="AttendanceFindByCourseAndUser", query ="SELECT a FROM Attendance a WHERE a.student = :student and " +
+                "a.course = :course"),
+        @NamedQuery(name="findMatchingAttendance", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseId and " +
+                "a.student.id = :studentId and a.date = :date")
+
+})
 public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
