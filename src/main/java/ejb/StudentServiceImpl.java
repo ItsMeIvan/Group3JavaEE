@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import java.util.List;
 import domain.StudentDomain;
 import jpa.Course;
+import jpa.Student;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -42,7 +43,11 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<StudentDomain> getStudents() {
-        return null;
+
+        List<Student> list  = em.createNamedQuery("GetAllStudents").getResultList();
+        return list.stream().
+                map(s->new StudentDomain(s.getId(),s.getFirstname(),s.getLastname(),s.getEmail())).
+                collect(Collectors.toList());
     }
 
     @Override
