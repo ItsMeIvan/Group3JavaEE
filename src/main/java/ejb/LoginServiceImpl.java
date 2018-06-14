@@ -1,5 +1,6 @@
 package ejb;
 
+import jpa.Admin;
 import jpa.Student;
 import jpa.Teacher;
 import jsf.LoginBean;
@@ -38,6 +39,16 @@ public class LoginServiceImpl implements LoginService {
         if (t.size()>0) {
             setId(t.get(0).getId());
             setUserRole("teacher");
+            return;
+        }
+
+        Query queryA = em.createNamedQuery("AdminFindByEmailAndPassword");
+        queryA.setParameter("email", email);
+        queryA.setParameter("password", password);
+        List<Admin> a = queryA.getResultList();
+        if (a.size()>0) {
+            setId(a.get(0).getId());
+            setUserRole("admin");
             return;
         }
     }

@@ -1,10 +1,7 @@
 package ejb;
 
 import domain.CourseDomain;
-import jpa.Attendance;
-import jpa.Course;
-import jpa.Student;
-import jpa.Teacher;
+import jpa.*;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -37,6 +34,11 @@ public class GenerateServiceImpl implements GenerateService {
         Teacher t2 = new Teacher("Boris","Yang","by@mail.com","12345");
         em.persist(t1);
         em.persist(t2);
+
+        Admin ad1 = new Admin("Jeff", "Kingston", "jk@mail.com", "12345");
+        Admin ad2 = new Admin("Ad", "Min", "am@mail.com", "12345");
+        em.persist(ad1);
+        em.persist(ad2);
 
 
         Course c1 = new Course("Java SE");

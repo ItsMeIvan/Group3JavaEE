@@ -3,6 +3,8 @@ package jpa;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name="AdminFindByEmailAndPassword", query ="SELECT a FROM Admin a WHERE a.email = :email and " +
+        "a.password = :password")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
