@@ -2,6 +2,7 @@ package jsf;
 
 import domain.StudentDomain;
 import domain.TeacherDomain;
+import ejb.CourseService;
 import ejb.StudentService;
 import ejb.TeacherService;
 
@@ -20,15 +21,17 @@ public class CreateCourseBean {
     private List<StudentDomain> studentsFromDb;
     private List<StudentDomain> studentsForCourse = new LinkedList<>();
 
-
     @EJB
     TeacherService teacherService;
 
     @EJB
     StudentService studentService;
 
-    public void createCourse(Long teacherId){
+    @EJB
+    CourseService courseService;
 
+    public void createCourse(){
+        courseService.addCourse(newCourseName,teacherId, studentsForCourse);
     }
 
     public void addStudentToCourse(Long studentId){

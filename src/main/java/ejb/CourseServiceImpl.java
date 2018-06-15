@@ -1,6 +1,7 @@
 package ejb;
 
 import domain.CourseDomain;
+import domain.StudentDomain;
 import jpa.Course;
 import jpa.Student;
 import jpa.Teacher;
@@ -25,8 +26,16 @@ public class CourseServiceImpl implements CourseService{
 
 
     @Override
-    public void addCourse(CourseDomain course) {
-
+    public void addCourse(String newCourseName, Long teacherId, List<StudentDomain> studentsForCourse) {
+        Course c = new Course();
+        c.setName(newCourseName);
+        Teacher teacher = em.find(Teacher.class, teacherId);
+        for(StudentDomain s: studentsForCourse){
+            Student student = em.find(Student.class, s.getId());
+            c.addStudents(student);
+        }
+        teacher.addCourses(c);
+        em.persist(c);
     }
 
     @Override
