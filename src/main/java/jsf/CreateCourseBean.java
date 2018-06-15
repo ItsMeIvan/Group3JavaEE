@@ -8,6 +8,7 @@ import ejb.TeacherService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.LinkedList;
 import java.util.List;
 
 @ManagedBean
@@ -17,7 +18,7 @@ public class CreateCourseBean {
     private Long teacherId;
     private List<TeacherDomain> teachers;
     private List<StudentDomain> studentsFromDb;
-    private List<StudentDomain> studentsForCourse;
+    private List<StudentDomain> studentsForCourse = new LinkedList<>();
 
 
     @EJB
@@ -31,22 +32,43 @@ public class CreateCourseBean {
     }
 
     public void addStudentToCourse(Long studentId){
-        //Leder till nullpointerexception
-        StudentDomain student = studentsFromDb.get(studentId.intValue());
-        studentsFromDb.remove(student);
-        studentsForCourse.add(student);
+        for(StudentDomain s: studentsForCourse) {
+            if (s.getId() == studentId)
+                return;
+        }
+
+        int index = 0;
+        for(StudentDomain st: studentsFromDb){
+            if(st.getId() == studentId){
+                studentsForCourse.add(studentsFromDb.get(index));
+                return;
+            }
+            index++;
+        }
+
+
     }
     public void removeStudentToCourse(Long studentId){
-        //Leder till nullpointerexception
-        StudentDomain student = studentsForCourse.get(studentId.intValue());
-        studentsForCourse.remove(student);
-        studentsFromDb.add(student);
+
+        if(studentsForCourse.size() > 0)
+        {
+            for(StudentDomain s: studentsForCourse)
+            {
+                if(s.getId() == studentId)
+                {
+                    studentsForCourse.remove(s);
+                }
+            }
+        }
     }
 
     public String ifStudentIsPicked(Long studentId){
-        //Fixa ifsatsen
-        //if(studentsForCourse.contains(studentsForCourse.get(studentId.intValue())))
-        //    return "Student is in the course";
+
+        for(StudentDomain s: studentsForCourse) {
+            if (s.getId() == studentId) {
+                return "Student is in the course";
+            }
+        }
         return "Student is not in the course";
     }
 
