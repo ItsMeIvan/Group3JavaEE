@@ -12,4 +12,6 @@ public interface AttendanceService {
     void saveAttendances(List<StudentDomain> students, Long currentCourseId);
 
     StringBuilder getCourseStatistics(Long courseid);
+
+    StringBuilder getStudentStatistics(Long studentId);
 }

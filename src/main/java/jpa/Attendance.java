@@ -11,6 +11,7 @@ import java.util.Date;
         @NamedQuery(name="AttendanceFindByCourseAndUser", query ="SELECT a FROM Attendance a WHERE a.student = :student and " +
                 "a.course = :course"),
         @NamedQuery(name="AttendanceFindByCourse", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseid"),
+        @NamedQuery(name="AttendanceFindByStudent", query ="SELECT a FROM Attendance a WHERE a.student.id = :studentid"),
         @NamedQuery(name="findMatchingAttendance", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseId and " +
                 "a.student.id = :studentId and a.date = :date")
 

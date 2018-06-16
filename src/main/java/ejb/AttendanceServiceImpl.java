@@ -24,8 +24,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public StringBuilder getAttendanceStatistics(Long courseId, Long studentId) {
-        StringBuilder statistic = new StringBuilder("Never been a student of the course");
-
+        StringBuilder statistic = new StringBuilder("There is no data of this course's attendance");
         Student student = em.find(Student.class, studentId);
         Course course = em.find(Course.class, courseId);
         Query query = em.createNamedQuery("AttendanceFindByCourseAndUser");
@@ -33,22 +32,8 @@ public class AttendanceServiceImpl implements AttendanceService {
         query.setParameter("course", course);
 
         List<Attendance> list = query.getResultList();
-        if (list.size()>0) {
-            double presence = 0.0d;
-            for (Attendance a: list) {
-                if(a.isPresence())
-                {
-                    presence++;
-                }
-            }
 
-            double totalAttendance = presence/list.size() * 100;
-            statistic.setLength(0);
-            statistic.append(totalAttendance).setLength(statistic.indexOf("."));
-            statistic.append("%");
-
-        }
-        return statistic;
+        return calculateStatistics(list, statistic);
     }
 
     @Override
@@ -97,11 +82,25 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public StringBuilder getCourseStatistics(Long courseid) {
-        StringBuilder statistic = new StringBuilder("There is no data on this courses attendance");
+        StringBuilder statistic = new StringBuilder("There is no data of this course's attendance rate");
         Query query = em.createNamedQuery("AttendanceFindByCourse");
         query.setParameter("courseid", courseid);
 
         List<Attendance> list = query.getResultList();
+        return calculateStatistics(list, statistic);
+    }
+
+    @Override
+    public StringBuilder getStudentStatistics(Long studentId) {
+        StringBuilder statistic = new StringBuilder("There is no data of this student's attendance rate");
+        Query query = em.createNamedQuery("AttendanceFindByStudent");
+        query.setParameter("studentid", studentId);
+
+        List<Attendance> list = query.getResultList();
+        return calculateStatistics(list, statistic);
+    }
+
+    public StringBuilder calculateStatistics(List<Attendance> list, StringBuilder statistic){
         if (list.size()>0) {
             double presence = 0.0d;
             for (Attendance a: list) {
@@ -110,7 +109,6 @@ public class AttendanceServiceImpl implements AttendanceService {
                     presence++;
                 }
             }
-
             double totalAttendance = presence/list.size() * 100;
             statistic.setLength(0);
             statistic.append(totalAttendance).setLength(statistic.indexOf("."));
