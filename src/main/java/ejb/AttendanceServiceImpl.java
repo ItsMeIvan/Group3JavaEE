@@ -24,7 +24,6 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public StringBuilder getAttendanceStatistics(Long courseId, Long studentId) {
-        StringBuilder statistic = new StringBuilder("There is no data of this course's attendance");
         Student student = em.find(Student.class, studentId);
         Course course = em.find(Course.class, courseId);
         Query query = em.createNamedQuery("AttendanceFindByCourseAndUser");
@@ -33,7 +32,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
         List<Attendance> list = query.getResultList();
 
-        return calculateStatistics(list, statistic);
+        return calculateStatistic(list);
     }
 
     @Override
@@ -82,25 +81,24 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public StringBuilder getCourseStatistics(Long courseid) {
-        StringBuilder statistic = new StringBuilder("There is no data of this course's attendance rate");
         Query query = em.createNamedQuery("AttendanceFindByCourse");
         query.setParameter("courseid", courseid);
 
         List<Attendance> list = query.getResultList();
-        return calculateStatistics(list, statistic);
+        return calculateStatistic(list);
     }
 
     @Override
     public StringBuilder getStudentStatistics(Long studentId) {
-        StringBuilder statistic = new StringBuilder("There is no data of this student's attendance rate");
         Query query = em.createNamedQuery("AttendanceFindByStudent");
         query.setParameter("studentid", studentId);
 
         List<Attendance> list = query.getResultList();
-        return calculateStatistics(list, statistic);
+        return calculateStatistic(list);
     }
 
-    public StringBuilder calculateStatistics(List<Attendance> list, StringBuilder statistic){
+    public StringBuilder calculateStatistic(List<Attendance> list){
+        StringBuilder statistic = new StringBuilder("NO DATA");
         if (list.size()>0) {
             double presence = 0.0d;
             for (Attendance a: list) {
