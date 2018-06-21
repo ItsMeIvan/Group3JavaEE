@@ -62,9 +62,6 @@ public class dailyAttendanceBean {
         return null;
     }
 
-    public void setAttendances(List<AttendanceDomain> attendances) {
-        this.attendances = attendances;
-    }
 
     public Long getCourseId() {
         return courseId;
