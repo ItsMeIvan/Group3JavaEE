@@ -1,10 +1,13 @@
 package ejb;
 
+import domain.AttendanceDomain;
 import domain.StudentDomain;
 import jpa.Course;
 
 import javax.ejb.Local;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Local
 public interface AttendanceService {
@@ -14,4 +17,6 @@ public interface AttendanceService {
     StringBuilder getCourseStatistics(Long courseid);
 
     StringBuilder getStudentStatistics(Long studentId);
+
+    Set<Date> getAttendanceDatesByCourse(Long courseId);
 }

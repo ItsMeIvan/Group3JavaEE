@@ -10,6 +10,8 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name="AttendanceFindByCourseAndUser", query ="SELECT a FROM Attendance a WHERE a.student = :student and " +
                 "a.course = :course"),
+        @NamedQuery(name="AttendanceFindByCourseAndDate", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseid " +
+        "and a.date = :date"),
         @NamedQuery(name="AttendanceFindByCourse", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseid"),
         @NamedQuery(name="AttendanceFindByStudent", query ="SELECT a FROM Attendance a WHERE a.student.id = :studentid"),
         @NamedQuery(name="findMatchingAttendance", query ="SELECT a FROM Attendance a WHERE a.course.id = :courseId and " +
@@ -32,6 +34,11 @@ public class Attendance {
     private Student student;
 
     public Attendance(){}
+
+
+    public Attendance(boolean presence){
+        this.presence = presence;
+    }
 
     public Attendance(Date date, boolean presence, Course course, Student student) throws ParseException {
         this.date = date;

@@ -16,7 +16,6 @@
                 <h:outputLabel value="Teachers"/><br/>
                 <h:selectOneMenu value="#{createCourseBean.teacherId}">
                    <f:selectItems value="#{createCourseBean.teachers}" var="t" itemValue="#{t.id}" itemLabel="#{t.firstname} #{t.lastname}, #{t.email}"/>
-                    <!--  <h:outputText value="#{t.firstname}"/> -->
                 </h:selectOneMenu>
             </div>
             <div class="toprow">

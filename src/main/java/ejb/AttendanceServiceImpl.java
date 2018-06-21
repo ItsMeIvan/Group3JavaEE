@@ -1,5 +1,6 @@
 package ejb;
 
+import domain.AttendanceDomain;
 import domain.StudentDomain;
 import jpa.Attendance;
 import jpa.Course;
@@ -13,8 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Stateless
 public class AttendanceServiceImpl implements AttendanceService {
@@ -95,6 +96,23 @@ public class AttendanceServiceImpl implements AttendanceService {
 
         List<Attendance> list = query.getResultList();
         return calculateStatistic(list);
+    }
+
+    @Override
+    public Set<Date> getAttendanceDatesByCourse(Long courseId) {
+        Course course = em.find(Course.class, courseId);
+
+        List<AttendanceDomain> adList = course.getAttendances().stream().
+                map(a->new AttendanceDomain(a.getId(),a.getDate(),a.isPresence())).
+                collect(Collectors.toList());
+
+        Set<Date> dateList = new HashSet<>();
+        for(AttendanceDomain ad: adList){
+            dateList.add(ad.getDate());
+        }
+
+        return dateList;
+
     }
 
     public StringBuilder calculateStatistic(List<Attendance> list){
