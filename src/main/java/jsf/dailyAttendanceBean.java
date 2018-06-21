@@ -10,6 +10,8 @@ import ejb.StudentService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -54,11 +56,9 @@ public class dailyAttendanceBean {
         return attendances;
     }
 
-
-
     public StringBuilder getDailyCourseAttendance(Long courseId, Date date){
         //Gör denna när dates skrivs upp först
-//        return attendanceService.getAttendanceStatisticsByCourse(courseId, date);
+        //return attendanceService.getAttendanceStatisticsByCourse(courseId, date);
         return null;
     }
 
@@ -71,6 +71,7 @@ public class dailyAttendanceBean {
     }
 
     public void changeCurrentCourceId(Long courseId) {
+        if(courseId != null)
         this.courseId = courseId;
     }
 
@@ -83,5 +84,9 @@ public class dailyAttendanceBean {
 
     public void setDateList(Set<Date> dateList) {
         this.dateList = dateList;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 }

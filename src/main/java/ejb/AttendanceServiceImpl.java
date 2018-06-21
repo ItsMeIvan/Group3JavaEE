@@ -100,6 +100,18 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public Set<Date> getAttendanceDatesByCourse(Long courseId) {
+
+        Query query = em.createNamedQuery("AttendanceFindByCourse");
+        query.setParameter("courseid", courseId);
+
+        Set<Date> dateList = new HashSet<>();
+        List<Attendance> list = query.getResultList();
+
+        for(Attendance ad: list){
+            dateList.add(ad.getDate());
+        }
+
+        /*
         Course course = em.find(Course.class, courseId);
 
         List<AttendanceDomain> adList = course.getAttendances().stream().
@@ -110,7 +122,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         for(AttendanceDomain ad: adList){
             dateList.add(ad.getDate());
         }
-
+*/
         return dateList;
 
     }

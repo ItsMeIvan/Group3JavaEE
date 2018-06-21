@@ -7,6 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:body>
+        <ui:composition template="template.xhtml">
+        <ui:define name="content">
         <h:form>
             <div class="toprow">
                 <h:outputLabel value="Course name"/><br/>
@@ -48,6 +50,8 @@
             </h:dataTable>
 
         </h:form>
+        </ui:define>
+        </ui:composition>
     </h:body>
 </f:view>
 </html>

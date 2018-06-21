@@ -7,6 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:body>
+
+        <ui:composition template="template.xhtml">
+            <ui:define name="content">
         <h:form>
             <!--Make it so the top row generates all of the courses-->
             <!--And that the leftmost column generates all of the unique dates in attendance-->
@@ -23,8 +26,13 @@
                 <p:column>
                     <h:outputText value="#{a}"/>
                 </p:column>
+               <!-- <p:column>
+                    <h:outputText value="#{dailyAttendanceBean.getDailyCourseAttendance(c.id, a)}"/>
+                </p:column>-->
             </p:dataTable>
         </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </f:view>
 </html>

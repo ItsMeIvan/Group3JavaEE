@@ -82,7 +82,7 @@ public class LoginBean implements Serializable {
                 setPassword("");
                 setMessage("Login failed");
             }
-        return returnPage;
+        return returnPage + "?faces-redirect=true";
     }
 
     public String getMessage() {
