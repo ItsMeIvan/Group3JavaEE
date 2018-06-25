@@ -3,7 +3,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
   <description>MyProject web.xml</description>
@@ -23,7 +23,7 @@
 
   <!-- Welcome files -->
   <welcome-file-list>
-    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>login.xhtml</welcome-file>
   </welcome-file-list>
 
 </web-app>
